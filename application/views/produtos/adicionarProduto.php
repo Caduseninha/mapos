@@ -112,7 +112,9 @@
 <script src="<?php echo base_url(); ?>assets/js/maskmoney.js"></script>
 <script type="text/javascript">
     function calcLucro(precoCompra, margemLucro) {
-        var precoVenda = (precoCompra * margemLucro / 100 + precoCompra).toFixed(2);
+        var preMargem = 100 - margemLucro;
+        var margemLucro = preMargem / 100;
+        precoVenda = (precoCompra / margemLucro).toFixed(2);
         return precoVenda;
     }
     $("#precoCompra").focusout(function() {
